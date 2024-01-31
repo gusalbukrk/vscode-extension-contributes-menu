@@ -43,12 +43,6 @@
         {
           "command": "extension.helloWorld",
           "when": "view == terminal",
-          "group": "navigation"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "extension.helloWorld",
           "//": "the navigation group is special as it will always be sorted to the top/beginning of a menu",
           "group": "navigation"
         }
@@ -59,8 +53,27 @@
           "//": "only show menu when clicked on top of a file",
           "when": "!explorerResourceIsFolder"
         }
+      ],
+
+      "editor/context": [
+        {
+          "submenu": "foobar.submenu",
+          "group": "navigation"
+        }
+      ],
+      "foobar.submenu": [
+        {
+          "command": "extension.helloWorld"
+        }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "//": "https://www.eliostruyf.com/creating-submenu-code-step-step-guide/",
+        "id": "foobar.submenu",
+        "label": "Submenu"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
