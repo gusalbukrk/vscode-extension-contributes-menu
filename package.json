@@ -15,7 +15,11 @@
     "commands": [
       {
         "command": "extension.helloWorld",
-        "title": "Hello World"
+        "title": "Hello World",
+        "icon": {
+          "light": "./media/light.svg",
+          "dark": "./media/dark.svg"
+        }
       }
     ],
     "keybindings": [
@@ -23,8 +27,40 @@
         "command": "extension.helloWorld",
         "key": "ctrl+f1",
         "mac": "cmd+f1"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.helloWorld",
+          "//": "invoked when pressing Alt while opening a menu (in Windows & Linux, Shift also does this)",
+          "alt": "extension.helloWorld",
+          "group": "navigation"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "extension.helloWorld",
+          "when": "view == terminal",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.helloWorld",
+          "//": "the navigation group is special as it will always be sorted to the top/beginning of a menu",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.helloWorld",
+          "//": "only show menu when clicked on top of a file",
+          "when": "!explorerResourceIsFolder"
+        }
+      ]
     }
-    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
